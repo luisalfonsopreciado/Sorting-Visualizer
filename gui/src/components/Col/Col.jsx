@@ -1,8 +1,8 @@
 import React from 'react'
 import classes from "./Col.module.css"
-const Col = props => {
+const Col = ({height }) => {
     return (
-        <div className={classes.Col}>
+        <div className={classes.Col} style={{height}}>
         </div>
     )
 }
