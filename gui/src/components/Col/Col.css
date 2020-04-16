@@ -1,6 +1,6 @@
 .array-bar{
-    width: 3px;
+    width: 2px;
     background-color: turquoise;
-    margin: 1px;
+    margin: 0 1px;
     display: inline-block;
 }
