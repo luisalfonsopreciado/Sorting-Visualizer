@@ -1,8 +1,8 @@
 import React from 'react'
-import classes from "./Col.module.css"
+import  "./Col.css"
 const Col = ({height }) => {
     return (
-        <div className={classes.Col} style={{height}}>
+        <div className={"array-bar"} style={{height}}>
         </div>
     )
 }

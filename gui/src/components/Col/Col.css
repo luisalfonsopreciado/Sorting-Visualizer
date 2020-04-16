@@ -1,6 +1,6 @@
-.Col{
+.array-bar{
     width: 3px;
-    background-color: green;
+    background-color: turquoise;
     margin: 1px;
     display: inline-block;
 }
