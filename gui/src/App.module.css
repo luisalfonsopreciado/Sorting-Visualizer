@@ -1,0 +1,7 @@
+* {
+  text-align: center;
+}
+.Container{
+  background-color: black;
+  min-width: 1200px;
+}

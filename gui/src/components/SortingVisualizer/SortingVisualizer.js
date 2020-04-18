@@ -3,6 +3,8 @@ import Col from "../Col/Col";
 import classes from "./SortingVisualizer.module.css";
 import { bubbleSort } from "../../algorithms/BubbleSort";
 import { getMergeSortAnimations } from "../../algorithms/MergeSort";
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
 }
@@ -20,6 +22,7 @@ const ANIMATION_SPEED_MS = 1;
 class SortingVisualizer extends Component {
   state = {
     array: [],
+    sorted: false,
   };
   componentDidMount() {
     this.onResetHandler();
@@ -27,7 +30,7 @@ class SortingVisualizer extends Component {
   bubbleSort = async () => {
     let array = this.state.array;
     const animation = bubbleSort(array);
-    this.setState({ array });
+    this.setState({ array , disabled: true});
     const arrayBars = document.getElementsByClassName("array-bar");
     for (let i = 0; i < animation.length; i++) {
       const [prev, next, prevHeight, nextHeight] = animation[i];
@@ -39,10 +42,13 @@ class SortingVisualizer extends Component {
           arrayBars[prev].style.height = `${prevHeight}px`;
           arrayBars[next].style.height = `${nextHeight}px`;
         }
+        if(i === animation.length-1){
+          this.setState({disabled: false})
+        }
       }, i * 1);
     }
   };
-  mergeSort = () => {
+  mergeSort = async() => {
     const animations = getMergeSortAnimations(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
@@ -61,6 +67,9 @@ class SortingVisualizer extends Component {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight}px`;
+          if(i === animations.length-1){
+            this.setState({disabled: false})
+          }
         }, i * ANIMATION_SPEED_MS);
       }
     }
@@ -81,10 +90,8 @@ class SortingVisualizer extends Component {
 
     return (
       <div classes={classes.Container}>
+          <Toolbar reset={this.onResetHandler} bubbleSort={this.bubbleSort} mergeSort={this.mergeSort}></Toolbar>
         {Columns}
-        <button onClick={this.bubbleSort}>Bubble Sort</button>
-        <button onClick={this.mergeSort}>Merge Sort</button>
-        <button onClick={this.onResetHandler}>Reset</button>
       </div>
     );
   }

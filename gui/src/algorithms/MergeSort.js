@@ -18,7 +18,9 @@ const merge = (array, l, m, r) => {
     //Create temp arrays
     const L = []
     const R = []
-
+   //merge the temp arrays
+    //Initial indexes of first and second subarrays
+    let i,j = 0
     //Copy data to temp arrays
     for(let i = 0; i<n1; i++){
         L[i] = array[l + i]
@@ -27,9 +29,7 @@ const merge = (array, l, m, r) => {
         R[i] = array[m + 1 + j]
     }
 
-    //merge the temp arrays
-    //Initial indexes of first and second subarrays
-    let i,j = 0
+   
 
     //Initial index of merged sub array
     let k = 1
