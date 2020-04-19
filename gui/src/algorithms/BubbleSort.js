@@ -18,7 +18,6 @@ export const bubbleSort = (enteredArray) => {
       }
   
     }
-    console.log(last)
   }
   return animation;
 };

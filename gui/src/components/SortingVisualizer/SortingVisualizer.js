@@ -3,8 +3,10 @@ import Col from "../Col/Col";
 import classes from "./SortingVisualizer.module.css";
 import { bubbleSort } from "../../algorithms/BubbleSort";
 import { quickSort } from "../../algorithms/QuickSort";
-import { getMergeSortAnimations, sort } from "../../algorithms/MergeSort";
+import { getMergeSortAnimations } from "../../algorithms/MergeSort";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import Modal from "../../UI/Modal/Modal"
+import Backdrop from "../../UI/Backdrop/Backdrop"
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
@@ -22,37 +24,71 @@ const SECONDARY_COLOR = "green";
 const ANIMATION_SPEED_MS = 1;
 class SortingVisualizer extends Component {
   state = {
+    showModal: true,
+    algorithm: "",
     array: [],
     sorted: false,
   };
   componentDidMount() {
     this.onResetHandler();
   }
+  toggleShowModal = () => {
+    this.setState({showModal : !this.state.showModal})
+  }
+  setAlgorithm = (algorithm) => {
+    this.setState({ algorithm: algorithm });
+  };
+  executeAlgorithm = () => {
+    switch (this.state.algorithm) {
+      case "bubbleSort":
+        this.bubbleSort();
+        break;
+      case "mergeSort":
+        this.mergeSort();
+        break;
+      case "quickSort":
+        this.quickSort();
+        break;
+      case "heapSort":
+        this.mergeSort();
+        break;
+      default:
+        this.quickSort();
+        break;
+    }
+  };
   quickSort = async () => {
     const array = this.state.array.slice(0, this.state.array.length);
     const animation = [];
 
     quickSort(array, 0, array.length - 1, animation);
-    this.setState({disabled: true });
+    this.setState({ disabled: true });
     const arrayBars = document.getElementsByClassName("array-bar");
     for (let i = 0; i < animation.length; i++) {
-      const [pivot, pivotHeight, body, bodyHeight, small ,smallHeight] = animation[i];
+      const [
+        pivot,
+        pivotHeight,
+        body,
+        bodyHeight,
+        small,
+        smallHeight,
+      ] = animation[i];
 
-      setTimeout(() => {   
-          arrayBars[pivot].style.height = `${pivotHeight}px`; 
-          arrayBars[pivot].style.backgroundColor = "pink"; 
+      setTimeout(() => {
+        arrayBars[pivot].style.height = `${pivotHeight}px`;
+        arrayBars[pivot].style.backgroundColor = "pink";
         if (body !== -1) {
           arrayBars[body].style.backgroundColor = "turqoise";
-          arrayBars[body].style.height = `${bodyHeight}px`;  
+          arrayBars[body].style.height = `${bodyHeight}px`;
         }
-        if(small !== -1){
+        if (small !== -1) {
           arrayBars[small].style.backgroundColor = "turqoise";
-          arrayBars[small].style.height = `${smallHeight}px`;  
+          arrayBars[small].style.height = `${smallHeight}px`;
         }
         if (i === animation.length - 1) {
           this.setState({ disabled: false });
         }
-      }, i * 10);
+      }, i * 1);
     }
   };
   bubbleSort = async () => {
@@ -73,7 +109,7 @@ class SortingVisualizer extends Component {
         if (i === animation.length - 1) {
           this.setState({ disabled: false });
         }
-      }, i * 1);
+      }, i * 0.1);
     }
   };
   mergeSort = async () => {
@@ -102,16 +138,12 @@ class SortingVisualizer extends Component {
       }
     }
   };
-  onSortHandler = () => {
-    let array = this.state.array;
-    bubbleSort(array);
-    this.setState({ array });
-  };
   onResetHandler = () => {
     const array = generateRandomArray(NUMBER_COLUMNS);
     this.setState({ array });
   };
   render() {
+    console.log(this.state.algorithm);
     let Columns = this.state.array.map((value, key) => (
       <Col key={key} height={value} />
     ));
@@ -119,12 +151,14 @@ class SortingVisualizer extends Component {
     return (
       <div classes={classes.Container}>
         <Toolbar
+          toggleShowModal={this.toggleShowModal}
+          executeAlgorithm={this.executeAlgorithm}
+          setAlgorithm={this.setAlgorithm}
           reset={this.onResetHandler}
-          bubbleSort={this.bubbleSort}
-          mergeSort={this.mergeSort}
-          quickSort={this.quickSort}
         ></Toolbar>
         {Columns}
+        {this.state.showModal ? <Backdrop show={this.state.showModal}/> : null}
+        {this.state.showModal ? <Modal clicked={this.toggleShowModal}show={this.state.showModal}/> : null}
       </div>
     );
   }
