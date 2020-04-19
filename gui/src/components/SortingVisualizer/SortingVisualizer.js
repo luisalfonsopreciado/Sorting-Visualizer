@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Col from "../Col/Col";
 import classes from "./SortingVisualizer.module.css";
 import { bubbleSort } from "../../algorithms/BubbleSort";
-import { getMergeSortAnimations } from "../../algorithms/MergeSort";
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
+import { quickSort } from "../../algorithms/QuickSort";
+import { getMergeSortAnimations, sort } from "../../algorithms/MergeSort";
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
@@ -11,11 +12,11 @@ function getRandomInt(max) {
 function generateRandomArray(length) {
   let array = [];
   for (let i = 0; i < length; i++) {
-    array[i] = getRandomInt(200) * 2.5;
+    array[i] = getRandomInt(300) * 2.5;
   }
   return array;
 }
-const NUMBER_COLUMNS = 300
+const NUMBER_COLUMNS = 300;
 const PRIMARY_COLOR = "turquoise";
 const SECONDARY_COLOR = "green";
 const ANIMATION_SPEED_MS = 1;
@@ -27,10 +28,37 @@ class SortingVisualizer extends Component {
   componentDidMount() {
     this.onResetHandler();
   }
+  quickSort = async () => {
+    const array = this.state.array.slice(0, this.state.array.length);
+    const animation = [];
+
+    quickSort(array, 0, array.length - 1, animation);
+    this.setState({disabled: true });
+    const arrayBars = document.getElementsByClassName("array-bar");
+    for (let i = 0; i < animation.length; i++) {
+      const [pivot, pivotHeight, body, bodyHeight, small ,smallHeight] = animation[i];
+
+      setTimeout(() => {   
+          arrayBars[pivot].style.height = `${pivotHeight}px`; 
+          arrayBars[pivot].style.backgroundColor = "pink"; 
+        if (body !== -1) {
+          arrayBars[body].style.backgroundColor = "turqoise";
+          arrayBars[body].style.height = `${bodyHeight}px`;  
+        }
+        if(small !== -1){
+          arrayBars[small].style.backgroundColor = "turqoise";
+          arrayBars[small].style.height = `${smallHeight}px`;  
+        }
+        if (i === animation.length - 1) {
+          this.setState({ disabled: false });
+        }
+      }, i * 10);
+    }
+  };
   bubbleSort = async () => {
     let array = this.state.array;
     const animation = bubbleSort(array);
-    this.setState({ array , disabled: true});
+    this.setState({ array, disabled: true });
     const arrayBars = document.getElementsByClassName("array-bar");
     for (let i = 0; i < animation.length; i++) {
       const [prev, next, prevHeight, nextHeight] = animation[i];
@@ -42,13 +70,13 @@ class SortingVisualizer extends Component {
           arrayBars[prev].style.height = `${prevHeight}px`;
           arrayBars[next].style.height = `${nextHeight}px`;
         }
-        if(i === animation.length-1){
-          this.setState({disabled: false})
+        if (i === animation.length - 1) {
+          this.setState({ disabled: false });
         }
       }, i * 1);
     }
   };
-  mergeSort = async() => {
+  mergeSort = async () => {
     const animations = getMergeSortAnimations(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
@@ -67,8 +95,8 @@ class SortingVisualizer extends Component {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight}px`;
-          if(i === animations.length-1){
-            this.setState({disabled: false})
+          if (i === animations.length - 1) {
+            this.setState({ disabled: false });
           }
         }, i * ANIMATION_SPEED_MS);
       }
@@ -90,7 +118,12 @@ class SortingVisualizer extends Component {
 
     return (
       <div classes={classes.Container}>
-          <Toolbar reset={this.onResetHandler} bubbleSort={this.bubbleSort} mergeSort={this.mergeSort}></Toolbar>
+        <Toolbar
+          reset={this.onResetHandler}
+          bubbleSort={this.bubbleSort}
+          mergeSort={this.mergeSort}
+          quickSort={this.quickSort}
+        ></Toolbar>
         {Columns}
       </div>
     );

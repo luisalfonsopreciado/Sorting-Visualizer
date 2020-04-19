@@ -7,7 +7,7 @@ const NavigationItems = (props) => (
         <NavigationItem >SORTING VISUALIZER</NavigationItem>
         <NavigationItem clicked={props.mergeSort}>Merge Sort</NavigationItem>
         <NavigationItem clicked={props.bubbleSort}>Bubble Sort</NavigationItem>
-        <NavigationItem>Quick Sort</NavigationItem>
+        <NavigationItem clicked={props.quickSort}>Quick Sort</NavigationItem>
         <NavigationItem>Insertion Sort</NavigationItem>
         <NavigationItem >Heap Sort</NavigationItem>
         <NavigationItem clicked={props.reset}>Reset</NavigationItem>
