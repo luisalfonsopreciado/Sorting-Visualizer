@@ -3,10 +3,11 @@ import Col from "../Col/Col";
 import classes from "./SortingVisualizer.module.css";
 import { bubbleSort } from "../../algorithms/BubbleSort";
 import { quickSort } from "../../algorithms/QuickSort";
+import { insertionSort } from "../../algorithms/InsertionSort";
 import { getMergeSortAnimations } from "../../algorithms/MergeSort";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
-import Modal from "../../UI/Modal/Modal"
-import Backdrop from "../../UI/Backdrop/Backdrop"
+import Modal from "../../UI/Modal/Modal";
+import Backdrop from "../../UI/Backdrop/Backdrop";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
@@ -28,33 +29,43 @@ class SortingVisualizer extends Component {
     algorithm: "",
     array: [],
     sorted: false,
+    disabled: false,
   };
   componentDidMount() {
     this.onResetHandler();
   }
   toggleShowModal = () => {
-    this.setState({showModal : !this.state.showModal})
-  }
+    this.setState({ showModal: !this.state.showModal });
+  };
   setAlgorithm = (algorithm) => {
     this.setState({ algorithm: algorithm });
   };
   executeAlgorithm = () => {
-    switch (this.state.algorithm) {
-      case "bubbleSort":
-        this.bubbleSort();
-        break;
-      case "mergeSort":
-        this.mergeSort();
-        break;
-      case "quickSort":
-        this.quickSort();
-        break;
-      case "heapSort":
-        this.mergeSort();
-        break;
-      default:
-        this.quickSort();
-        break;
+    if(this.state.sorted){
+      this.onResetHandler()
+    }
+    if (!this.state.disabled) { 
+      this.setState({ sorted: true , disabled: true,});
+      switch (this.state.algorithm) {
+        case "bubbleSort":
+          this.bubbleSort();
+          break;
+        case "mergeSort":
+          this.mergeSort();
+          break;
+        case "quickSort":
+          this.quickSort();
+          break;
+        case "heapSort":
+          this.mergeSort();
+          break;
+        case "insertionSort":
+          this.insertionSort();
+          break;
+        default:
+          this.quickSort();
+          break;
+      }
     }
   };
   quickSort = async () => {
@@ -112,6 +123,22 @@ class SortingVisualizer extends Component {
       }, i * 0.1);
     }
   };
+  insertionSort = async () => {
+    let array = this.state.array;
+    const animation = insertionSort(array);
+    const arrayBars = document.getElementsByClassName("array-bar");
+    for (let i = 0; i < animation.length; i++) {
+      const [index, height] = animation[i];
+
+      setTimeout(() => {
+        arrayBars[index].style.backgroundColor = "red";
+        arrayBars[index].style.height = `${height}px`;
+        if (i === animation.length - 1) {
+          this.setState({ disabled: false });
+        }
+      }, i * 0.5);
+    }
+  };
   mergeSort = async () => {
     const animations = getMergeSortAnimations(this.state.array);
     for (let i = 0; i < animations.length; i++) {
@@ -140,7 +167,10 @@ class SortingVisualizer extends Component {
   };
   onResetHandler = () => {
     const array = generateRandomArray(NUMBER_COLUMNS);
-    this.setState({ array });
+    if(!this.state.disabled){
+      this.setState({ array, sorted: false , disabled: false});
+    }
+    
   };
   render() {
     console.log(this.state.algorithm);
@@ -157,8 +187,10 @@ class SortingVisualizer extends Component {
           reset={this.onResetHandler}
         ></Toolbar>
         {Columns}
-        {this.state.showModal ? <Backdrop show={this.state.showModal}/> : null}
-        {this.state.showModal ? <Modal clicked={this.toggleShowModal}show={this.state.showModal}/> : null}
+        {this.state.showModal ? <Backdrop show={this.state.showModal} /> : null}
+        {this.state.showModal ? (
+          <Modal clicked={this.toggleShowModal} show={this.state.showModal} />
+        ) : null}
       </div>
     );
   }
