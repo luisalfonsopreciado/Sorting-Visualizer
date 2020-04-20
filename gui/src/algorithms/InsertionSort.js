@@ -5,8 +5,9 @@ const insert = (array, rightIndex, value, animation) => {
             animation.push([i + 1, array[i + 1]])
             array[i + 1] = array[i];
         }
-        animation.push([i + 1, value])
+        
         array[i + 1] = value;
+        animation.push([i + 1, value])
 }
 
 export const insertionSort = (array) => {

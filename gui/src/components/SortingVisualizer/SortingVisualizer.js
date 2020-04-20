@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { PureComponent, Fragment } from "react";
 import Col from "../Col/Col";
+import withClass from "../hoc/withClass"
 import classes from "./SortingVisualizer.module.css";
 import { bubbleSort } from "../../algorithms/BubbleSort";
 import { quickSort } from "../../algorithms/QuickSort";
@@ -23,7 +24,7 @@ const NUMBER_COLUMNS = 300;
 const PRIMARY_COLOR = "turquoise";
 const SECONDARY_COLOR = "green";
 const ANIMATION_SPEED_MS = 1;
-class SortingVisualizer extends Component {
+class SortingVisualizer extends PureComponent {
   state = {
     showModal: true,
     algorithm: "",
@@ -71,7 +72,6 @@ class SortingVisualizer extends Component {
   quickSort = async () => {
     const array = this.state.array.slice(0, this.state.array.length);
     const animation = [];
-
     quickSort(array, 0, array.length - 1, animation);
     this.setState({ disabled: true });
     const arrayBars = document.getElementsByClassName("array-bar");
@@ -87,32 +87,31 @@ class SortingVisualizer extends Component {
 
       setTimeout(() => {
         arrayBars[pivot].style.height = `${pivotHeight}px`;
-        arrayBars[pivot].style.backgroundColor = "pink";
+        arrayBars[pivot].style.backgroundColor = PRIMARY_COLOR;
         if (body !== -1) {
-          arrayBars[body].style.backgroundColor = "turqoise";
+          arrayBars[body].style.backgroundColor = PRIMARY_COLOR;
           arrayBars[body].style.height = `${bodyHeight}px`;
         }
         if (small !== -1) {
-          arrayBars[small].style.backgroundColor = "turqoise";
+          arrayBars[small].style.backgroundColor = PRIMARY_COLOR;
           arrayBars[small].style.height = `${smallHeight}px`;
         }
         if (i === animation.length - 1) {
           this.setState({ disabled: false });
         }
-      }, i * 1);
+      }, i * ANIMATION_SPEED_MS);
     }
   };
   bubbleSort = async () => {
     let array = this.state.array;
     const animation = bubbleSort(array);
-    this.setState({ array, disabled: true });
     const arrayBars = document.getElementsByClassName("array-bar");
     for (let i = 0; i < animation.length; i++) {
       const [prev, next, prevHeight, nextHeight] = animation[i];
 
       setTimeout(() => {
-        arrayBars[prev].style.backgroundColor = "turquoise";
-        arrayBars[next].style.backgroundColor = "green";
+        arrayBars[prev].style.backgroundColor = PRIMARY_COLOR;
+        arrayBars[next].style.backgroundColor = SECONDARY_COLOR;
         if (nextHeight || prevHeight) {
           arrayBars[prev].style.height = `${prevHeight}px`;
           arrayBars[next].style.height = `${nextHeight}px`;
@@ -120,27 +119,27 @@ class SortingVisualizer extends Component {
         if (i === animation.length - 1) {
           this.setState({ disabled: false });
         }
-      }, i * 0.1);
+      }, i * ANIMATION_SPEED_MS /10);
     }
   };
   insertionSort = async () => {
-    let array = this.state.array;
+    const array = this.state.array.slice(0, this.state.array.length);
     const animation = insertionSort(array);
     const arrayBars = document.getElementsByClassName("array-bar");
     for (let i = 0; i < animation.length; i++) {
       const [index, height] = animation[i];
-
       setTimeout(() => {
-        arrayBars[index].style.backgroundColor = "red";
+        arrayBars[index].style.backgroundColor = PRIMARY_COLOR;
         arrayBars[index].style.height = `${height}px`;
         if (i === animation.length - 1) {
           this.setState({ disabled: false });
         }
-      }, i * 0.5);
+      }, i * ANIMATION_SPEED_MS / 2);
     }
   };
   mergeSort = async () => {
-    const animations = getMergeSortAnimations(this.state.array);
+    const array = this.state.array.slice(0, this.state.array.length);
+    const animations = getMergeSortAnimations(array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
       const isColorChange = i % 3 !== 2;
@@ -173,13 +172,12 @@ class SortingVisualizer extends Component {
     
   };
   render() {
-    console.log(this.state.algorithm);
     let Columns = this.state.array.map((value, key) => (
       <Col key={key} height={value} />
     ));
 
     return (
-      <div classes={classes.Container}>
+      <Fragment>
         <Toolbar
           toggleShowModal={this.toggleShowModal}
           executeAlgorithm={this.executeAlgorithm}
@@ -191,8 +189,8 @@ class SortingVisualizer extends Component {
         {this.state.showModal ? (
           <Modal clicked={this.toggleShowModal} show={this.state.showModal} />
         ) : null}
-      </div>
+      </Fragment>
     );
   }
 }
-export default SortingVisualizer;
+export default withClass(SortingVisualizer, classes.Container);
