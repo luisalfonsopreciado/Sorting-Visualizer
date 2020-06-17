@@ -1,27 +1,17 @@
-.Toolbar{
-    height: 56px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgb(8, 42, 57);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20;
-    box-sizing: border-box;
-    z-index: 1000;
+.Toolbar {
+  overflow: hidden;
+  background-color: rgb(8, 42, 57);
 }
+.Toolbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
 
-.Toolbar nav {
-    height: 100%;
-}
+.Toolbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
 
-.Logo{
-    height: 80%;
-}
-@media(max-width: 499px){
-    .DesktopOnly {
-        display: none;
-    }
-}

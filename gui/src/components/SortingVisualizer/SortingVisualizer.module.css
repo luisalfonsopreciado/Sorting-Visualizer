@@ -1,5 +1,5 @@
 .ColumnContainer {
-  margin-top: 80px;
   display: inline-block;
   min-width: 1000px;
+  width: 100%;
 }

@@ -1,46 +1,47 @@
 .NavigationItem {
-    margin: 10px 0;
-    box-sizing: border-box;
-    display: block;   
-    width: 100%;
+  float: left;
+  overflow: hidden;
 }
 
-.NavigationItem p {
-    color: white;
-    text-decoration: none;
-    width: 100%;
-    box-sizing: border-box;
-    display: block;
+.NavigationItem .Btn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-.NavigationItem p:hover,
-.NavigationItem p:active,
-.NavigationItem p.active {
-    color: #cccc;
+.navbar p:hover, .NavigationItem:hover .Btn {
+  background-color: red;
+  
 }
 
-@media (min-width: 500px) {
-    .NavigationItem {
-        margin: 0;
-        display: flex;
-        height: 100%;
-        width: auto;
-        align-items: center;
-    }
-    
-    .NavigationItem p {
-        color: white;
-        height: 100%;
-        padding: 16px 10px;
-        border-bottom: 4px solid transparent;
-    }
-    
-    .NavigationItem p:hover,
-    .NavigationItem p:active,
-    .NavigationItem p.active {
-        background-color: rgb(119, 159, 174);
-        border-bottom: 4px solid #cccc;
-        cursor: pointer;
-        color: white;
-    }
+.NavigationItem-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.NavigationItem-content p {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.NavigationItem-content p:hover {
+  background-color: #ddd;
+}
+
+.NavigationItem:hover .NavigationItem-content {
+  display: block;
 }

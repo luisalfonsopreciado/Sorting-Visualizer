@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 import * as cts from "../../../utility";
+import DropDown from "./Dropdown/DropDown"
 
 const NavigationItems = ({
   setAlgorithm,
@@ -10,29 +10,30 @@ const NavigationItems = ({
   toggleShowModal,
   algorithm,
 }) => (
-  <ul className={classes.NavigationItems}>
+  <>
     <NavigationItem clicked={toggleShowModal}>
       SORTING VISUALIZER
     </NavigationItem>
-    <NavigationItem clicked={() => setAlgorithm(cts.MERGE_SORT)}>
+    <DropDown clicked={() => setAlgorithm(cts.MERGE_SORT)}>
       Merge Sort
-    </NavigationItem>
-    <NavigationItem clicked={() => setAlgorithm(cts.BUBBLE_SORT)}>
+    </DropDown>
+    <DropDown clicked={() => setAlgorithm(cts.BUBBLE_SORT)}>
       Bubble Sort
-    </NavigationItem>
-    <NavigationItem clicked={() => setAlgorithm(cts.QUICK_SORT)}>
+    </DropDown>
+    <DropDown clicked={() => setAlgorithm(cts.QUICK_SORT)}>
       Quick Sort
-    </NavigationItem>
-    <NavigationItem clicked={() => setAlgorithm(cts.INSERTION_SORT)}>
+    </DropDown>
+    <DropDown clicked={() => setAlgorithm(cts.INSERTION_SORT)}>
       Insertion Sort
-    </NavigationItem>
-    <NavigationItem clicked={() => setAlgorithm(cts.HEAP_SORT)}>
+    </DropDown>
+    <DropDown clicked={() => setAlgorithm(cts.HEAP_SORT)}>
       Heap Sort
-    </NavigationItem>
-    <NavigationItem clicked={reset}>Reset</NavigationItem>
+    </DropDown>
+    <DropDown clicked={reset}>Reset</DropDown>
     <NavigationItem clicked={executeAlgorithm}>
       Visualize {algorithm}!
     </NavigationItem>
-  </ul>
+    
+  </>
 );
 export default NavigationItems;
