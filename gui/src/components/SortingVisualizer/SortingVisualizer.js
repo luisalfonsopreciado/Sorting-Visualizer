@@ -7,7 +7,6 @@ import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import styles from "./SortingVisualizer.module.css";
 
 const SortingVisualizer = ({ openModal }) => {
-  const [showModal, setShowModal] = useState(true);
   const [algorithm, setAlgorithm] = useState(cts.QUICK_SORT);
   const [array, setArray] = useState([]);
   const [isSorted, setIsSorted] = useState(false);
@@ -25,11 +24,6 @@ const SortingVisualizer = ({ openModal }) => {
   useEffect(() => {
     onResetHandler();
   }, []);
-
-  const toggleShowModal = () => {
-    const prevModal = showModal;
-    setShowModal(!prevModal);
-  };
 
   const executeAlgorithm = () => {
     if (isSorted) {
@@ -65,7 +59,7 @@ const SortingVisualizer = ({ openModal }) => {
   let Columns = array.map((value, key) => <Col key={key} height={value} />);
 
   return (
-    <>
+    <div className={styles.ColumnContainer}>
       <Toolbar
         toggleShowModal={openModal}
         executeAlgorithm={executeAlgorithm}
@@ -73,8 +67,9 @@ const SortingVisualizer = ({ openModal }) => {
         reset={onResetHandler}
         algorithm={algorithm}
       />
-      <div className={styles.ColumnContainer}>{Columns}</div>
-    </>
+      <div style={{marginTop: "30px"}}>{Columns}</div>
+      
+    </div>
   );
 };
 

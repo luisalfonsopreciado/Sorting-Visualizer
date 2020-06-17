@@ -1,12 +1,11 @@
-import React from 'react'
-import classes from './NavigationItem.module.css'
+import React from "react";
+import classes from "./NavigationItem.module.css";
 
-const NavigationItem = ({children, clicked}) => (
-   <li className={classes.NavigationItem}>
-       <p onClick={() => clicked()}
-            activeClassName={classes.active} >
-            {children}
-        </p>
-    </li>
-)
-export default NavigationItem
+const NavigationItem = ({ children, clicked }) => (
+  <div className={classes.NavigationItem}>
+    <button onClick={clicked} className={classes.Btn}>
+      {children}
+    </button>
+  </div>
+);
+export default NavigationItem;
