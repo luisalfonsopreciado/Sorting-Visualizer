@@ -6,7 +6,7 @@ import { generateRandomArray } from "../../utility";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import styles from "./SortingVisualizer.module.css";
 
-const SortingVisualizer = ({ openModal }) => {
+const SortingVisualizer = ({ openModal, openInfo }) => {
   const [algorithm, setAlgorithm] = useState(cts.QUICK_SORT);
   const [array, setArray] = useState([]);
   const [isSorted, setIsSorted] = useState(false);
@@ -66,6 +66,7 @@ const SortingVisualizer = ({ openModal }) => {
         setAlgorithm={setAlgorithm}
         reset={onResetHandler}
         algorithm={algorithm}
+        openInfo={openInfo}
       />
       <div style={{marginTop: "30px"}}>{Columns}</div>
       
