@@ -1,3 +1,7 @@
 .Container{
     display: inline-block;
 }
+
+.ColumnContainer{
+    margin-top: 80px;
+}
