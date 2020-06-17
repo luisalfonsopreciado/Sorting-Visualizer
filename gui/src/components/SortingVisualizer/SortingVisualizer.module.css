@@ -1,7 +1,5 @@
-.Container{
-    display: inline-block;
-}
-
-.ColumnContainer{
-    margin-top: 80px;
+.ColumnContainer {
+  margin-top: 80px;
+  display: inline-block;
+  min-width: 1000px;
 }

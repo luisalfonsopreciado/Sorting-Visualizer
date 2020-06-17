@@ -4,11 +4,9 @@ import * as animations from "../../animations";
 import * as cts from "../../utility";
 import { generateRandomArray } from "../../utility";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
-import Modal from "../../UI/Modal/Modal";
-import Backdrop from "../../UI/Backdrop/Backdrop";
 import styles from "./SortingVisualizer.module.css";
 
-const SortingVisualizer = () => {
+const SortingVisualizer = ({ openModal }) => {
   const [showModal, setShowModal] = useState(true);
   const [algorithm, setAlgorithm] = useState(cts.QUICK_SORT);
   const [array, setArray] = useState([]);
@@ -69,15 +67,13 @@ const SortingVisualizer = () => {
   return (
     <>
       <Toolbar
-        toggleShowModal={toggleShowModal}
+        toggleShowModal={openModal}
         executeAlgorithm={executeAlgorithm}
         setAlgorithm={setAlgorithm}
         reset={onResetHandler}
         algorithm={algorithm}
       />
       <div className={styles.ColumnContainer}>{Columns}</div>
-      {showModal ? <Backdrop show={showModal} /> : null}
-      {showModal ? <Modal clicked={toggleShowModal} show={showModal} /> : null}
     </>
   );
 };

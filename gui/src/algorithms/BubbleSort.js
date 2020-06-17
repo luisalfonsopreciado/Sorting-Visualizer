@@ -1,5 +1,4 @@
-export const bubbleSort = (enteredArray) => {
-  const animation = [];
+export const bubbleSort = (enteredArray, animation) => {
   const array = enteredArray.slice(0, enteredArray.length);
   let last = enteredArray.length - 1;
   for (let i = 0; i < array.length; i++) {
