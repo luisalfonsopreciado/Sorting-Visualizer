@@ -44,7 +44,7 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
           animations.quickSortAnimation(array, setIsDisabled);
           break;
         case cts.HEAP_SORT:
-          animations.mergeSortAnimation(array, setIsDisabled);
+          animations.heapSortAnimation(array, setIsDisabled);
           break;
         case cts.INSERTION_SORT:
           animations.insertionSortAnimation(array, setIsDisabled);
@@ -68,8 +68,7 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
         algorithm={algorithm}
         openInfo={openInfo}
       />
-      <div style={{marginTop: "30px"}}>{Columns}</div>
-      
+      <div style={{ marginTop: "30px" }}>{Columns}</div>
     </div>
   );
 };
