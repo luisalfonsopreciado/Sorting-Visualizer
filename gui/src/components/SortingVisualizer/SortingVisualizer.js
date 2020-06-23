@@ -49,6 +49,9 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
         case cts.INSERTION_SORT:
           animations.insertionSortAnimation(array, setIsDisabled);
           break;
+        case cts.SELECTION_SORT:
+          animations.selectionSortAnimation(array, setIsDisabled);
+          break;
         default:
           animations.quickSortAnimation(array, setIsDisabled);
           break;

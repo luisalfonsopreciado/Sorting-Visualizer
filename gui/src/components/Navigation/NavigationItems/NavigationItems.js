@@ -45,6 +45,12 @@ const NavigationItems = ({
     >
       Heap Sort
     </DropDown>
+    <DropDown
+      clicked={() => setAlgorithm(cts.SELECTION_SORT)}
+      moreInfo={() => openInfo(cts.SELECTION_SORT)}
+    >
+      Selection Sort
+    </DropDown>
     <NavigationItem clicked={reset}>Reset</NavigationItem>
     <NavigationItem clicked={executeAlgorithm}>
       Visualize {algorithm}!

@@ -3,6 +3,7 @@ export const BUBBLE_SORT = "Bubble Sort"
 export const QUICK_SORT = "Quick Sort"
 export const INSERTION_SORT = "Insertion Sort"
 export const HEAP_SORT = "Heap Sort"
+export const SELECTION_SORT = "Selection Sort"
 
 
 export const NUMBER_COLUMNS = 250;
