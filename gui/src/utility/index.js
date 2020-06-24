@@ -7,7 +7,7 @@ const getRandomInt = (max) => {
 export const generateRandomArray = (length) => {
   let array = [];
   for (let i = 0; i < length; i++) {
-    array[i] = getRandomInt(220) * 2.5;
+    array[i] = getRandomInt(550);
   }
   return array;
 };

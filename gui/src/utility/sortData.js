@@ -21,3 +21,11 @@ sortData[cts.HEAP_SORT] = {
 sortData[cts.INSERTION_SORT] = {
   description: "Insertion sort is a simple sorting algorithm that works the way we sort playing cards in our hands.",
 };
+
+sortData[cts.SELECTION_SORT] = {
+  description: "The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array. 1) The subarray which is already sorted. 2) Remaining subarray which is unsorted. In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray."
+}
+
+sortData[cts.COUNTING_SORT] = {
+  description: "Counting sort is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then doing some arithmetic to calculate the position of each object in the output sequence."
+}

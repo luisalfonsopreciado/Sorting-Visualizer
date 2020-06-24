@@ -51,6 +51,12 @@ const NavigationItems = ({
     >
       Selection Sort
     </DropDown>
+    <DropDown
+      clicked={() => setAlgorithm(cts.COUNTING_SORT)}
+      moreInfo={() => openInfo(cts.COUNTING_SORT)}
+    >
+      Counting Sort
+    </DropDown>
     <NavigationItem clicked={reset}>Reset</NavigationItem>
     <NavigationItem clicked={executeAlgorithm}>
       Visualize {algorithm}!
