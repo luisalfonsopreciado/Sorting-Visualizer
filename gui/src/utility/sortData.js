@@ -29,3 +29,7 @@ sortData[cts.SELECTION_SORT] = {
 sortData[cts.COUNTING_SORT] = {
   description: "Counting sort is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then doing some arithmetic to calculate the position of each object in the output sequence."
 }
+
+sortData[cts.RADIX_SORT] = {
+  description:"This algorithm is only used to sort numbers. We sort the number from least significant digit to most significant digit. We use counting sort as a subroutine to sort."
+}

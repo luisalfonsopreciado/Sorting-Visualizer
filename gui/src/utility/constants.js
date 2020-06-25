@@ -5,6 +5,7 @@ export const INSERTION_SORT = "Insertion Sort"
 export const HEAP_SORT = "Heap Sort"
 export const SELECTION_SORT = "Selection Sort"
 export const COUNTING_SORT = "Counting Sort"
+export const RADIX_SORT = "Radix Sort"
 
 export const NUMBER_COLUMNS = 250;
 export const PRIMARY_COLOR = "rgb(57, 86, 218)";
