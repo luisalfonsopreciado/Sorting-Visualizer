@@ -19,3 +19,5 @@ This application currently supports the following algorithms:
 **Selection Sort** 
 
 **Counting Sort**
+
+**Radix Sort**
