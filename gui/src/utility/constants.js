@@ -1,12 +1,12 @@
-export const MERGE_SORT = "Merge Sort";
-export const BUBBLE_SORT = "Bubble Sort";
-export const QUICK_SORT = "Quick Sort";
-export const INSERTION_SORT = "Insertion Sort";
-export const HEAP_SORT = "Heap Sort";
-export const SELECTION_SORT = "Selection Sort";
-export const COUNTING_SORT = "Counting Sort";
-export const RADIX_SORT = "Radix Sort";
-export const BUCKET_SORT = "Bucket Sort";
+export const MERGE_SORT = "MergeSort";
+export const BUBBLE_SORT = "BubbleSort";
+export const QUICK_SORT = "QuickSort";
+export const INSERTION_SORT = "InsertionSort";
+export const HEAP_SORT = "HeapSort";
+export const SELECTION_SORT = "SelectionSort";
+export const COUNTING_SORT = "CountingSort";
+export const RADIX_SORT = "RadixSort";
+export const BUCKET_SORT = "BucketSort";
 
 export const NUMBER_COLUMNS = 250;
 export const PRIMARY_COLOR = "rgb(57, 86, 218)";

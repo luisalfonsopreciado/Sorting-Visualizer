@@ -71,7 +71,7 @@ const NavigationItems = ({
     </DropDown>
     <NavigationItem clicked={reset}>Reset</NavigationItem>
     <NavigationItem clicked={executeAlgorithm}>
-      Visualize {algorithm}!
+        <h3>Visualize {algorithm}!</h3>
     </NavigationItem>
   </>
 );
