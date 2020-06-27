@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Col from "../Col/Col";
 import * as animations from "../../animations";
 import * as cts from "../../utility";
@@ -12,18 +12,16 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
   const [isSorted, setIsSorted] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const onResetHandler = () => {
+  const onResetHandler = useCallback(() => {
     const array = generateRandomArray(cts.NUMBER_COLUMNS);
-    if (!isDisabled) {
-      setArray(array);
-      setIsSorted(false);
-      setIsDisabled(false);
-    }
-  };
+    setArray(array);
+    setIsSorted(false);
+    setIsDisabled(false);
+  }, []);
 
   useEffect(() => {
     onResetHandler();
-  }, []);
+  }, [onResetHandler]);
 
   const executeAlgorithm = () => {
     if (isSorted) {

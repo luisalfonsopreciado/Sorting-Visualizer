@@ -2,7 +2,7 @@ export const bucketSort = (array, animation) => {
   const buckets = new Array(Math.floor(550 / 10) + 1).fill(null);
 
   for (let i in buckets) {
-    buckets[i] = new Array();
+    buckets[i] = [];
   }
 
   for (let i in array) {
@@ -13,16 +13,12 @@ export const bucketSort = (array, animation) => {
   let result = [];
 
   for (let i in buckets) {
+    animateBucket(buckets, i, animation);
     result = result.concat(buckets[i]);
   }
-
-  for (let i in result) {
-    animation.push([i, result[i]]);
-  }
+  
   animation.push([result.length - 1, result[result.length - 1]]);
 
-  console.log(result);
-  console.log(animation)
   return animation;
 };
 
@@ -30,15 +26,20 @@ const insert = (buckets, bucketIndex, value, animation) => {
   for (let i = 0; i < buckets[bucketIndex].length; i++) {
     const val = buckets[bucketIndex][i];
     if (value <= val) {
-      const pos = getPos(buckets, bucketIndex);
-      animation.push([pos + i + 1, value]);
       buckets[bucketIndex].splice(i, 0, value);
+      animateBucket(buckets, bucketIndex, animation);
       return;
     }
   }
-  const pos = getPos(buckets, bucketIndex);
-  animation.push([pos + buckets[bucketIndex].length, value]);
   buckets[bucketIndex].push(value);
+  animateBucket(buckets, bucketIndex, animation);
+};
+
+const animateBucket = (buckets, bucketIndex, animation) => {
+  let pos = getPos(buckets, bucketIndex);
+    for (let j = 0; j < buckets[bucketIndex].length; j++) {
+      animation.push([pos + j, buckets[bucketIndex][j]]);
+    }
 };
 
 const getPos = (buckets, bucketIndex) => {

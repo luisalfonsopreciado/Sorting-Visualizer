@@ -28,7 +28,7 @@ const countingSort = (array, exp, animations) => {
   for (let i in array) {
     animations.push([parseInt(i), output[i]]);
     array[i] = output[i];
-    if(i == array.length - 1) animations.push([parseInt(i), output[i]]);
+    animations.push([parseInt(i), output[i]]);
   }
 };
 
