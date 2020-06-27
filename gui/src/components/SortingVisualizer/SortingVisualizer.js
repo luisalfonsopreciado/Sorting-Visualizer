@@ -58,6 +58,9 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
         case cts.RADIX_SORT:
           animations.radixSortAnimation(array, setIsDisabled);
           break;
+        case cts.BUCKET_SORT:
+          animations.bucketSortAnimation(array, setIsDisabled);
+          break;
         default:
           animations.quickSortAnimation(array, setIsDisabled);
           break;

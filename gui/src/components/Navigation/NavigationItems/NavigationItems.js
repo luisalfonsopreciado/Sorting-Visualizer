@@ -63,6 +63,12 @@ const NavigationItems = ({
     >
       Radix Sort
     </DropDown>
+    <DropDown
+      clicked={() => setAlgorithm(cts.BUCKET_SORT)}
+      moreInfo={() => openInfo(cts.BUCKET_SORT)}
+    >
+      Bucket Sort
+    </DropDown>
     <NavigationItem clicked={reset}>Reset</NavigationItem>
     <NavigationItem clicked={executeAlgorithm}>
       Visualize {algorithm}!
