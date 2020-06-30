@@ -69,6 +69,12 @@ const NavigationItems = ({
     >
       Bucket Sort
     </DropDown>
+    <DropDown
+      clicked={() => setAlgorithm(cts.TIM_SORT)}
+      moreInfo={() => openInfo(cts.TIM_SORT)}
+    >
+      Tim Sort
+    </DropDown>
     <NavigationItem clicked={reset}>Reset</NavigationItem>
     <NavigationItem clicked={executeAlgorithm}>
         <h3>Visualize {algorithm}!</h3>
