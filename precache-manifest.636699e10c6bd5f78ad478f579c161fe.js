@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8a2940b53f71c28da7933f7092fa6b20",
+    "revision": "37d37175301bf425b8a28a3dc50cbb9c",
     "url": "/Sorting-Visualizer/index.html"
   },
   {
-    "revision": "62f3e56c6b573250da51",
+    "revision": "b58e0b66d7b95bfb6bb7",
     "url": "/Sorting-Visualizer/static/css/main.307b1dda.chunk.css"
   },
   {
@@ -16,12 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Sorting-Visualizer/static/js/11.daf26873.chunk.js"
   },
   {
-    "revision": "44dceff06f0ccca0e6ba",
-    "url": "/Sorting-Visualizer/static/js/2.3660cda9.chunk.js"
+    "revision": "2005f9879406ebbfd49e",
+    "url": "/Sorting-Visualizer/static/js/12.847d08be.chunk.js"
+  },
+  {
+    "revision": "575192e6a5125ccb6424",
+    "url": "/Sorting-Visualizer/static/js/2.367a7602.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/Sorting-Visualizer/static/js/2.3660cda9.chunk.js.LICENSE.txt"
+    "url": "/Sorting-Visualizer/static/js/2.367a7602.chunk.js.LICENSE.txt"
   },
   {
     "revision": "67a0f3ab67f55c163ff9",
@@ -48,16 +52,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Sorting-Visualizer/static/js/8.5963363b.chunk.js"
   },
   {
-    "revision": "aec6fa8be40af6c83225",
-    "url": "/Sorting-Visualizer/static/js/9.1a3904d5.chunk.js"
+    "revision": "e6a5319b3ad8912148e9",
+    "url": "/Sorting-Visualizer/static/js/9.4e5dd7aa.chunk.js"
   },
   {
-    "revision": "62f3e56c6b573250da51",
-    "url": "/Sorting-Visualizer/static/js/main.e92f6638.chunk.js"
+    "revision": "b58e0b66d7b95bfb6bb7",
+    "url": "/Sorting-Visualizer/static/js/main.88cab673.chunk.js"
   },
   {
-    "revision": "26d9f4ae2cfa746a88c3",
-    "url": "/Sorting-Visualizer/static/js/runtime-main.1e1b11fc.js"
+    "revision": "e2abc275de20d24c8ffd",
+    "url": "/Sorting-Visualizer/static/js/runtime-main.111b2acd.js"
   },
   {
     "revision": "4b82b5789db3c8561ec3f16f7640a644",
@@ -84,8 +88,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Sorting-Visualizer/static/media/MergeSort.38f29e2a.md"
   },
   {
-    "revision": "4aa14b76f34515712abc4f722308facb",
-    "url": "/Sorting-Visualizer/static/media/QuickSort.4aa14b76.md"
+    "revision": "65f77555cd2eab1bef74074ab92570ea",
+    "url": "/Sorting-Visualizer/static/media/QuickSort.65f77555.md"
   },
   {
     "revision": "7718b07e73983bc05b766f633f063bb7",
@@ -94,5 +98,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ce490928b976473fad14e51a2a7fdb15",
     "url": "/Sorting-Visualizer/static/media/SelectionSort.ce490928.md"
+  },
+  {
+    "revision": "17e51a8efc7c6a5b8a44d7f5c3a1d998",
+    "url": "/Sorting-Visualizer/static/media/TimSort.17e51a8e.md"
   }
 ]);
