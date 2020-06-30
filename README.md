@@ -21,3 +21,7 @@ This application currently supports the following algorithms:
 **Counting Sort**
 
 **Radix Sort**
+
+**Bucket Sort**
+
+**Tim Sort**
