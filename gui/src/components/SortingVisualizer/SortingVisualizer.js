@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Col from "../Col/Col";
 import * as animations from "../../animations";
 import * as cts from "../../utility";
@@ -12,22 +12,21 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
   const [isSorted, setIsSorted] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const onResetHandler = useCallback(() => {
+  const onResetHandler = () => {
+    if (isDisabled) return;
     const array = generateRandomArray(cts.NUMBER_COLUMNS);
     setArray(array);
     setIsSorted(false);
     setIsDisabled(false);
-  }, []);
+  };
 
-  useEffect(() => {
-    onResetHandler();
-  }, [onResetHandler]);
+  useEffect(onResetHandler, []);
 
   const executeAlgorithm = () => {
-    if (isSorted) {
-      onResetHandler();
-    }
     if (!isDisabled) {
+      if (isSorted) {
+        onResetHandler();
+      }
       setIsSorted(true);
       setIsDisabled(true);
 
@@ -81,7 +80,7 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
         algorithm={algorithm}
         openInfo={openInfo}
       />
-      <div style={{ marginTop: "30px" }}>{Columns}</div>
+      <div className={styles.Columns}>{Columns}</div>
     </div>
   );
 };
