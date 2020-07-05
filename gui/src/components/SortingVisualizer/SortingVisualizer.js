@@ -61,6 +61,9 @@ const SortingVisualizer = ({ openModal, openInfo }) => {
         case cts.TIM_SORT:
           animations.timSortAnimation(array, setIsDisabled);
           break;
+        case cts.TREE_SORT:
+          animations.treeSortAnimation(array, setIsDisabled);
+          break;
         default:
           animations.quickSortAnimation(array, setIsDisabled);
           break;

@@ -55,7 +55,7 @@ const App = () => {
             algorithms. To get Started, click on a sorting algorithm located in
             the header and press Visualize!.
           </h4>
-          <p>For a better Experience, Use use browser to full width</p>
+          <p>For a better Experience, set your browser to full width</p>
         </Paper>
       </CustomDialog>
 

@@ -75,9 +75,15 @@ const NavigationItems = ({
     >
       Tim Sort
     </DropDown>
+    <DropDown
+      clicked={() => setAlgorithm(cts.TREE_SORT)}
+      moreInfo={() => openInfo(cts.TREE_SORT)}
+    >
+      Tree Sort
+    </DropDown>
     <NavigationItem clicked={reset}>Reset</NavigationItem>
     <NavigationItem clicked={executeAlgorithm}>
-        <h3>Visualize {algorithm}!</h3>
+      <h3>Visualize {algorithm}!</h3>
     </NavigationItem>
   </>
 );

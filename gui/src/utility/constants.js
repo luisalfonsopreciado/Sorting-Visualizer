@@ -8,6 +8,7 @@ export const COUNTING_SORT = "CountingSort";
 export const RADIX_SORT = "RadixSort";
 export const BUCKET_SORT = "BucketSort";
 export const TIM_SORT = "TimSort";
+export const TREE_SORT = "TreeSort";
 
 export const NUMBER_COLUMNS = 250;
 export const PRIMARY_COLOR = "rgb(57, 86, 218)";
