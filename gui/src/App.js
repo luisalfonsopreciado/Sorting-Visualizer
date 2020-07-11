@@ -4,11 +4,19 @@ import SortingVisualizer from "./components/SortingVisualizer/SortingVisualizer"
 import { CustomDialog } from "./components/UI/CustomDialog/CustomDialog";
 import Paper from "@material-ui/core/Paper";
 import marked from "marked";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  paper: {
+    padding: "20px",
+  },
+});
 
 const App = () => {
   const [isOpen, setIsOpen] = useState("");
   const [infoOpen, setInfoOpen] = useState(false);
   const [markdown, setMarkDown] = useState();
+  const styles = useStyles()
 
   useEffect(() => {
     handleDialogOpen();
@@ -23,7 +31,7 @@ const App = () => {
   };
 
   const handleInfoOpen = async (type) => {
-   const info = await import(`./info/${type}.md`)
+    const info = await import(`./info/${type}.md`);
     fetch(info.default)
       .then((res) => {
         console.log(res);
@@ -36,7 +44,7 @@ const App = () => {
   const handleInfoClose = () => {
     setInfoOpen(false);
   };
-  
+
   return (
     <>
       <SortingVisualizer
@@ -48,13 +56,13 @@ const App = () => {
         handleClose={handleDialogClose}
         className={classes.customDialog}
       >
-        <Paper>
+        <Paper className={styles.paper}>
           <h1>Welcome to The Sorting Visualizer!</h1>
-          <h4>
+          <p>
             This Project Helps CS Enthusiasts visualize popular sorting
             algorithms. To get Started, click on a sorting algorithm located in
             the header and press Visualize!.
-          </h4>
+          </p>
           <p>For a better Experience, set your browser to full width</p>
         </Paper>
       </CustomDialog>

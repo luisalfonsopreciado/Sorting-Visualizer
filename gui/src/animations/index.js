@@ -9,3 +9,4 @@ export * from "./RadixSort";
 export * from "./BucketSort";
 export * from "./TimSort";
 export * from "./TreeSort";
+export * from "./CombSort";

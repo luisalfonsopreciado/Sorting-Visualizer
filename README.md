@@ -4,19 +4,19 @@ Welcome to Sorting Visualizer! I built this application because I was interested
 
 ## The Sorting Algorithms
 
-This application currently supports the following algorithms: 
+This application currently supports the following algorithms:
 
-**Quick Sort** 
+**Quick Sort**
 
-**Merge Sort** 
+**Merge Sort**
 
-**Insertion Sort** 
+**Insertion Sort**
 
-**Bubble Sort** 
+**Bubble Sort**
 
-**Heap Sort** 
+**Heap Sort**
 
-**Selection Sort** 
+**Selection Sort**
 
 **Counting Sort**
 
@@ -25,3 +25,7 @@ This application currently supports the following algorithms:
 **Bucket Sort**
 
 **Tim Sort**
+
+**Tree Sort**
+
+**Comb Sort**
