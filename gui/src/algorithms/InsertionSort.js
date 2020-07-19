@@ -1,5 +1,5 @@
 const insert = (array, rightIndex, value, animation) => {
-  var i;
+  let i;
   for (i = rightIndex; array[i] > value && i >= 0; i--) {
     animation.push([i + 1, array[i]]);
     array[i + 1] = array[i];
