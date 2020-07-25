@@ -25,11 +25,11 @@ There are many different versions of quick sort that pick pivot in different way
 
 ### Pseudo Code
 
-```python
-## low  --> Starting index,  high  --> Ending index */
+```
+// low  --> Starting index,  high  --> Ending index
 quickSort(arr[], low, high){
     if (low < high){
-        ## pi is partitioning index, arr[pi] is now at right place 
+        // pi is partitioning index, arr[pi] is now at right place 
         pi = partition(arr, low, high);
 
         quickSort(arr, low, pi - 1);  // Before pi

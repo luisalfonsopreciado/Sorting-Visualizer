@@ -2,16 +2,18 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-
   font-size: 20px;
   line-height: normal;
   word-spacing: normal;
 }
 
 p {
-  text-align: justify;
   font-size: large;
   margin-top: 15px;
+}
+
+p, li, pre{
+  text-align: justify;
 }
 
 pre {
