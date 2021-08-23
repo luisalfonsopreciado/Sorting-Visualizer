@@ -11,8 +11,9 @@ export const heapSort = (array, animations) => {
 
   while (!heap.isEmpty()) {
     const height = heap.pop(animations);
+    array[lastIndex] = height;
     animations.push([lastIndex, 0, height, heap.items[0]]);
-    lastIndex -= 1;
+    lastIndex--;
   }
 
   return animations;

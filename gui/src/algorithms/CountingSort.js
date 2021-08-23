@@ -1,25 +1,28 @@
 export const countingSort = (array, animations) => {
-  const newArr = new Array(550 + 1).fill(0);
+  const count = new Array(550 + 1).fill(0);
 
-  for (let i in array) {
-    const val = array[i];
-    newArr[val] = newArr[val] + 1;
+  // Count ocurrence of each element in the input array
+  for (let n of array) {
+    count[n]++;
   }
 
-  for (let i = 1; i < newArr.length; i++) {
-    newArr[i] = newArr[i] + newArr[i - 1];
+  // Have count[i] be the number of elements less than or equal to i
+  for (let i = 1; i < count.length; i++) {
+    count[i] = count[i] + count[i - 1];
   }
 
-  const result = new Array(array.length).fill(0);
+  const result = new Array(array.length);
 
-  for (let i = 0; i < array.length; i++) {
-    const val = array[i];
-    const index = newArr[val];
+  for (let val of array) {
+    const index = count[val];
     result[index - 1] = val;
-    newArr[val] = index - 1;
+    count[val] = index - 1;
     animations.push([index - 1 , val]);
     animations.push([index - 1 , val]);
   }
 
-  console.log(result);
+  // Copy result into input array
+  for (let i = 0; i < result.length; i++) {
+    array[i] = result[i];
+  }
 };

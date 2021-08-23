@@ -1,8 +1,8 @@
-import { bubbleSort } from "../BubbleSort";
+import { insertionSort } from "../InsertionSort";
 import { isSorted, getArray } from "./helpers";
 
 it("sorts array in ascending order", () => {
   const arr = getArray(100);
-  bubbleSort(arr, []);
+  insertionSort(arr, []);
   expect(isSorted(arr)).toBeTruthy();
 });
