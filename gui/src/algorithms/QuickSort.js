@@ -17,13 +17,17 @@ const partition = (arr, low, high, animation) => {
   return i + 1;
 };
 
-export const quickSort = (arr, low, high, animation) => {
+export const quickSort = (arr, animation) => {
+  quickSortRecursive(arr, 0, arr.length - 1, animation);
+}
+
+const quickSortRecursive = (arr, low, high, animation) => {
   if (low < high) {
     const part = partition(arr, low, high, animation);
     // Recursively sort elements before
     // partition and after partition
-    quickSort(arr, low, part - 1, animation);
-    quickSort(arr, part + 1, high, animation);
+    quickSortRecursive(arr, low, part - 1, animation);
+    quickSortRecursive(arr, part + 1, high, animation);
   }
 };
 

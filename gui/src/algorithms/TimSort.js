@@ -23,7 +23,7 @@ export const timSort = (array, animation) => {
   for (let i = 1; i < array.length; i++) {
     if (array[i] < array[i - 1]) lows.push(i);
   }
-  console.log(lows)
+  
   merge(array, 0, 25, 49, animation);
   merge(array, 0, 50, 74, animation);
   merge(array, 0, 75, 99, animation);
@@ -39,6 +39,7 @@ const merge = (array, low, secondlow, secondhigh, animation) => {
   const helper = [];
   const oldLow = low;
   const high = secondlow - 1;
+
   while (low <= high && secondlow <= secondhigh) {
     if (array[low] < array[secondlow]) {
       helper.push(array[low]);
@@ -58,7 +59,7 @@ const merge = (array, low, secondlow, secondhigh, animation) => {
       helper.push(array[i]);
     }
   }
-  console.log(helper);
+
   for (let i = 0; i < helper.length; i++) {
     array[i] = helper[i];
     animation.push([i + oldLow, helper[i]]);

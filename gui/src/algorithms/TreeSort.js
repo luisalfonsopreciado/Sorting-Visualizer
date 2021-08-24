@@ -7,6 +7,12 @@ export const treeSort = (array, animation) => {
     tree.insert(num);
   }
 
-  tree.inorder(tree.root, animation);
+  const result = [];
+
+  tree.inorder(tree.root, animation, result);
   animation.push([animation.length - 1, animation[animation.length - 1]]);
+
+  for (let i in result) {
+    array[i] = result[i];
+  }
 };

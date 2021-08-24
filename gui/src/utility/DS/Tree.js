@@ -40,10 +40,11 @@ export class Tree {
     }
   }
 
-  inorder(node, animations) {
+  inorder(node, animations, array) {
     if (node === null) return;
-    this.inorder(node.left, animations);
+    this.inorder(node.left, animations, array);
     animations.push([animations.length, node.val]);
-    this.inorder(node.right, animations);
+    array.push(node.val);
+    this.inorder(node.right, animations, array);
   }
 }
