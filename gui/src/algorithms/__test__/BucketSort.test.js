@@ -1,6 +1,6 @@
-import { insertionSort } from "../InsertionSort";
+import { bucketSort } from "../BucketSort";
 import { testSortAscending } from "./helpers";
 
 it("sorts array in ascending order", () => {
-  testSortAscending(insertionSort, 100);
+  testSortAscending(bucketSort, 100);
 });

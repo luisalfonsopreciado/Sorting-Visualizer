@@ -5,7 +5,6 @@ export const radixSort = (array, animations) => {
     countingSort(array, exp, animations);
   }
   console.log(array);
-  console.log(animations);
 };
 
 const countingSort = (array, exp, animations) => {
@@ -33,11 +32,9 @@ const countingSort = (array, exp, animations) => {
 };
 
 const getMax = (arr) => {
-  if (!arr) return -1;
-
   let max = arr[0];
-  for (let i in arr) {
-    if (arr[i] > max) max = arr[i];
+  for (let n of arr) {
+    max = Math.max(max, n);
   }
   return max;
 };

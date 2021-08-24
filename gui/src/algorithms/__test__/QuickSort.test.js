@@ -1,6 +1,6 @@
-import { bubbleSort } from "../BubbleSort";
+import { quickSort } from "../QuickSort";
 import { testSortAscending } from "./helpers";
 
 it("sorts array in ascending order", () => {
-  testSortAscending(bubbleSort, 100);
+  testSortAscending(quickSort, 100);
 });

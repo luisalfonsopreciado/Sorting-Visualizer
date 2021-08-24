@@ -13,7 +13,7 @@ export const selectionSort = (arr, animations) => {
     animations.push([i, minIndex, arr[i], arr[minIndex]]);
     min = arr[Math.min(i + 1, arr.length - 1)];
   }
-  console.log(arr);
+  
   return animations;
 };
 

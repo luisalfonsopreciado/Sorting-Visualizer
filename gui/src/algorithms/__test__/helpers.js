@@ -26,8 +26,19 @@ export const getArray = (n) => {
 };
 
 /**
- * Returns a random number between min (inclusive) and max (exclusive)
+ * Test for a sortMethod
+ * @param {*} sortMethod 
+ * @param {*} n 
+ */
+export const testSortAscending = (sortMethod, n) => {
+  const arr = getArray(n);
+  sortMethod(arr, []);
+  expect(isSorted(arr)).toBeTruthy();
+};
+
+/**
+ * Returns a random integer between min (inclusive) and max (exclusive)
  */
 export const getRandomArbitrary = (min, max) => {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 };

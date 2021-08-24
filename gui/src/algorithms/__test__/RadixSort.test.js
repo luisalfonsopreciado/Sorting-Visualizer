@@ -1,6 +1,6 @@
-import { insertionSort } from "../InsertionSort";
+import { radixSort } from "../RadixSort";
 import { testSortAscending } from "./helpers";
 
 it("sorts array in ascending order", () => {
-  testSortAscending(insertionSort, 100);
+  testSortAscending(radixSort, 100);
 });

@@ -16,8 +16,12 @@ export const bucketSort = (array, animation) => {
     animateBucket(buckets, i, animation);
     result = result.concat(buckets[i]);
   }
-  
+
   animation.push([result.length - 1, result[result.length - 1]]);
+
+  for (let i in result) {
+    array[i] = result[i];
+  }
 
   return animation;
 };
@@ -37,9 +41,9 @@ const insert = (buckets, bucketIndex, value, animation) => {
 
 const animateBucket = (buckets, bucketIndex, animation) => {
   let pos = getPos(buckets, bucketIndex);
-    for (let j = 0; j < buckets[bucketIndex].length; j++) {
-      animation.push([pos + j, buckets[bucketIndex][j]]);
-    }
+  for (let j = 0; j < buckets[bucketIndex].length; j++) {
+    animation.push([pos + j, buckets[bucketIndex][j]]);
+  }
 };
 
 const getPos = (buckets, bucketIndex) => {
